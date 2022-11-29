@@ -66,6 +66,7 @@ class ReserveController {
         });
     };
 
+    /*
     async update(reserve, id, userId) {
 
         if (userId == null) {
@@ -88,12 +89,12 @@ class ReserveController {
             }
         );
     };
-
+*/
     async delete(id, userId) {
 
         let reserve = this.findById(id, userId);
 
-        if(!reserve){
+        if (!reserve) {
             throw 'Reserva inexistente'
         };
 
@@ -102,11 +103,11 @@ class ReserveController {
         // };
 
         await Reserve.destroy({
-            where: {idReserve: id}
+            where: { idReserve: id }
         });
 
         return Reserve.destroy({
-            where: {id}
+            where: { id }
         });
     };
 
