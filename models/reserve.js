@@ -23,9 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     Reserve.init({
         date: DataTypes.DATE,
         time: DataTypes.TIME,
-        court: DataTypes.INTEGER,
-        reserved: DataTypes.BOOLEAN,
-        count: DataTypes.INTEGER
+        reserved: DataTypes.BOOLEAN
     }, {
         sequelize,
         modelName: 'Reserve',

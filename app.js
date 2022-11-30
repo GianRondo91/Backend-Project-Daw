@@ -12,6 +12,6 @@ app.use(router);
 
 db.then(() => {
     app.listen(port, () => {
-        console.log(`Server app listening at http://localhost:${port}`);
+        console.log(`Servidor escuchando en: http://localhost:${port}`);
     });
 }).catch(console.log);

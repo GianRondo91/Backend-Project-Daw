@@ -1,7 +1,7 @@
 'use strict';
 
 const {
-    Model
+    Model, DATE
 } = require('sequelize');
 
 module.exports = (sequlize, DataTypes) => {
@@ -20,6 +20,10 @@ module.exports = (sequlize, DataTypes) => {
         surname: DataTypes.STRING,
         email: DataTypes.STRING,
         dni: DataTypes.STRING,
+        phone: DataTypes.INTEGER,
+        address: DataTypes.STRING,
+        city: DataTypes.STRING,
+        cp: DataTypes.INTEGER,
         password: DataTypes.STRING,
         isAdmin: DataTypes.BOOLEAN
     },
