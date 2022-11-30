@@ -1,5 +1,4 @@
-const { Reserve } = require('../models');
-const reserve = require('../models/reserve');
+const { Reserve } = require('../models/reserve');
 
 class ReserveController {
     constructor() { }

@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
 });
 
 //getAll
-route.get('/', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         let reserved = null;
 

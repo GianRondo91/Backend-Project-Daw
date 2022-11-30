@@ -1,8 +1,8 @@
-const { User } = require('../models');
+const { User } = require('../models/user');
 
-const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const secret = process.env - JWT_SECRET || 'pwsScret';
+const bcrypt = require('bcrypt');
+const secret = process.env.JWT_SECRET || 'pwsScret';
 
 class UserController {
     constructor() { }
@@ -82,6 +82,6 @@ class UserController {
     };
 };
 
-let useController = new UserController;
+let userController = new UserController;
 
-module.exports = useController;
+module.exports = userController;
