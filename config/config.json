@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "password",
+    "password": "",
     "database": "ilerna-backend",
     "port": "3306",
     "host": "localhost",
