@@ -5,29 +5,25 @@ let reserves = [
     idUser: 2,
     idCourt: 2,
     date: "2022.12.27",
-    time: "09:00",
-    reserved: true
+    time: "09:00"
  },
   {
     idUser: 2,
     idCourt: 4,
     date: "2022.12.15",
-    time: "12:00",
-    reserved: true,
+    time: "12:00"
   },
   {
     idUser: 1,
     idCourt: 5,
     date: "2022.12.29",
-    time: "18:00",
-    reserved: true,
+    time: "18:00"
   },
   {
     idUser: 1,
     idCourt: 8,
     date: "2022.12.20",
-    time: "21:00",
-    reserved: true,
+    time: "21:00"
   },
 ];
 
@@ -35,11 +31,11 @@ reserves = reserves.map((reserve) => ({...reserve, updatedAt: new Date, createdA
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert('Reserves', reserves);
   },
 
-  async down(queryInterface, Sequelize) {
+  down: async (queryInterface, Sequelize) => {
     /**
      * Add commands to revert seed here.
      *

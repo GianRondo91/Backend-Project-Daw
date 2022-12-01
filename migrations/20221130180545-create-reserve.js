@@ -13,38 +13,38 @@ module.exports = {
       date: {
         type: Sequelize.DATE
       },
-        time: {
-          type: Sequelize.TIME
+      time: {
+        type: Sequelize.TIME
+      },
+      reserved: {
+        type: Sequelize.BOOLEAN
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      idUser: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Users',
+          key: 'id'
         },
-        reserved: {
-          type: Sequelize.BOOLEAN
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
+      },
+      idCourt: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Courts',
+          key: 'id'
         },
-        createdAt: {
-          allowNull: false,
-          type: Sequelize.DATE
-        },
-        idUser: {
-          type: Sequelize.INTEGER,
-          references: {
-            model: 'User',
-            key: 'id'
-          },
-          onUpdate: 'CASCADE',
-          onDelete: 'CASCADE'
-        },
-        idCourt: {
-          type: Sequelize.INTEGER,
-          references: {
-            model: 'Court',
-            key: 'id'
-          },
-          onUpdate: 'CASCADE',
-          onDelete: 'CASCADE'
-        },
-        updatedAt: {
-          allowNull: false,
-          type: Sequelize.DATE
-        }
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      }
     });
   },
 

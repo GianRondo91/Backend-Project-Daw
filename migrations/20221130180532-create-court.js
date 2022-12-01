@@ -14,18 +14,11 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       category: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.STRING
       },
       availability: {
         type: Sequelize.BOOLEAN
       },
-      time: [
-        {
-          hour: {
-            type: Sequelize.TIME
-          }
-        }
-      ],
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

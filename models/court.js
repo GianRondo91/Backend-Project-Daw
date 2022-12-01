@@ -19,12 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     Court.init({
         number: DataTypes.INTEGER,
         category: DataTypes.BOOLEAN,
-        availability: DataTypes.BOOLEAN,
-        time: [
-            {
-                hour: DataTypes.TIME,
-            }
-        ],
+        availability: DataTypes.BOOLEAN
     },
         {
             sequelize,

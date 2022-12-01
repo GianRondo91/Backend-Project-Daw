@@ -4,202 +4,42 @@ let courts = [
   {
     number: 1,
     category: "Padel",
-    availability: true,
-    time: [
-      {
-        hour: "09:00",
-      },
-      {
-        hour: "10:30",
-      },
-      {
-        hour: "12:00",
-      },
-      {
-        hour: "18:00",
-      },
-      {
-        hour: "19:30",
-      },
-      {
-        hour: "21:00",
-      }
-    ]
+    availability: true
   },
   {
     number: 2,
     category: "Padel",
-    availability: true,
-    time: [
-      {
-        hour: "09:00",
-      },
-      {
-        hour: "10:30",
-      },
-      {
-        hour: "12:00",
-      },
-      {
-        hour: "18:00",
-      },
-      {
-        hour: "19:30",
-      },
-      {
-        hour: "21:00",
-      }
-    ]
+    availability: true
   },
   {
     number: 3,
     category: "Padel",
-    availability: true,
-    time: [
-      {
-        hour: "09:00",
-      },
-      {
-        hour: "10:30",
-      },
-      {
-        hour: "12:00",
-      },
-      {
-        hour: "18:00",
-      },
-      {
-        hour: "19:30",
-      },
-      {
-        hour: "21:00",
-      }
-    ]
+    availability: true
   },
   {
     number: 4,
     category: "Padel",
-    availability: true,
-    time: [
-      {
-        hour: "09:00",
-      },
-      {
-        hour: "10:30",
-      },
-      {
-        hour: "12:00",
-      },
-      {
-        hour: "18:00",
-      },
-      {
-        hour: "19:30",
-      },
-      {
-        hour: "21:00",
-      }
-    ]
+    availability: true
   },
   {
     number: 5,
     category: "Tenis",
-    availability: true,
-    time: [
-      {
-        hour: "09:00",
-      },
-      {
-        hour: "10:30",
-      },
-      {
-        hour: "12:00",
-      },
-      {
-        hour: "18:00",
-      },
-      {
-        hour: "19:30",
-      },
-      {
-        hour: "21:00",
-      }
-    ]
+    availability: true
   },
   {
     number: 6,
     category: "Tenis",
-    availability: true,
-    time: [
-      {
-        hour: "09:00",
-      },
-      {
-        hour: "10:30",
-      },
-      {
-        hour: "12:00",
-      },
-      {
-        hour: "18:00",
-      },
-      {
-        hour: "19:30",
-      },
-      {
-        hour: "21:00",
-      }
-    ]
+    availability: true
   },
   {
     number: 7,
     category: "Tenis",
-    availability: true,
-    time: [
-      {
-        hour: "09:00",
-      },
-      {
-        hour: "10:30",
-      },
-      {
-        hour: "12:00",
-      },
-      {
-        hour: "18:00",
-      },
-      {
-        hour: "19:30",
-      },
-      {
-        hour: "21:00",
-      }
-    ]
+    availability: true
   },
   {
     number: 8,
     category: "Tenis",
-    availability: true,
-    time: [
-      {
-        hour: "09:00",
-      },
-      {
-        hour: "10:30",
-      },
-      {
-        hour: "12:00",
-      },
-      {
-        hour: "18:00",
-      },
-      {
-        hour: "19:30",
-      },
-      {
-        hour: "21:00",
-      }
-    ]
+    availability: true
   },
 ];
 
@@ -207,11 +47,11 @@ courts = courts.map((court) => ({ ...court, updatedAt: new Date, createdAt: new 
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert('Courts', courts);
   },
 
-  async down(queryInterface, Sequelize) {
+  down: async (queryInterface, Sequelize) => {
     /**
      * Add commands to revert seed here.
      *
