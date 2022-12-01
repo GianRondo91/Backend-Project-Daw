@@ -64,7 +64,7 @@ class UserController {
 
     };
 
-    async update() {
+    async update(user, id) {
         return User.update(
             user,
             {

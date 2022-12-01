@@ -9,7 +9,7 @@ const auth = require('./middleware/auth');
 
 //Resources
 router.use('/users', auth, userRouter);
-router.use('/reserve', auth, reserveRouter);
-router.use('/court', auth, courtController);
+router.use('/reserves', auth, reserveRouter);
+router.use('/courts', auth, courtController);
 
 module.exports = router;

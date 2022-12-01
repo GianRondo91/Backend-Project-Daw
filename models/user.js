@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
         static associate(models) {
             this.hasMany(models.Reserve, {
                 sourceKey: 'id',
-                foreignkey: 'idUser'
+                foreignKey: 'idUser'
             });
         };
     };

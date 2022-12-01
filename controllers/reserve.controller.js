@@ -5,46 +5,53 @@ class ReserveController {
 
     async create(reserve, userId) {
         reserve.idUser = userId;
-        reserve.reserved = false;
 
-        if (!reserve.courts && !reserve.courts.lengh) {
-            throw 'La orden debe contener productos.';
+        if (!reserve.idCourt 
+            || !/\d{2}:[03]0/.test(reserve.time)
+            || !/\d{4}\.\d{2}\.\d{2}/.test(reserve.date)) {
+            throw 'La reserva es invalida';
         }
 
-        let createReserve = await Reserve.create(reserve);
+        var existingReserve = await Reserve.findOne({
+            where: {
+                idCourt: reserve.idCourt,
+                time: reserve.time,
+                date: reserve.date
+            }
+        });
 
-        for (let court of reserve.courts) {
-            // console.log(court);
-            await Reserve.create({
-                idReserve: createReserve.id,
-                idCourt: court.id,
-                count: product.count
-            });
+        if(existingReserve){
+            console.log(existingReserve);
+            throw 'Ya existe una reserva para esos datos.';
         }
+
+        return await Reserve.create(reserve);
     };
 
-    async getAll(userId, reserved) {
+    async getAll(userId, date) {
 
-        if (reserved === null || reserved === undefined) {
+        if (!date) {
             if (userId == null) {
-                return Reserve.findAll();
+                return await Reserve.findAll();
             }
 
-            return Reserve.findAll({
-                where: { reserved }
+            return await Reserve.findAll({
+                where: {idUser: userId}
             })
         };
+
+        //date = date.replace("-", ".");
 
         if (userId == null) {
-            return Reserve.findAll({
-                where: { reserved }
-            })
+            return await Reserve.findAll({
+                where: { date }
+            });
         };
 
-        return Reserve.findAll({
+        return await Reserve.findAll({
             where: {
                 idUser: userId,
-                reserved
+                date
             }
         });
     };
@@ -52,12 +59,12 @@ class ReserveController {
     async findById(id, userId) {
 
         if (userId == null) {
-            return Reserve.findOne({
+            return await Reserve.findOne({
                 where: { id }
             })
         };
 
-        return Reserve.findOne({
+        return await Reserve.findOne({
             where: {
                 id,
                 idUser: userId
@@ -97,17 +104,10 @@ class ReserveController {
             throw 'Reserva inexistente'
         };
 
-        // if(reserve.reserved){
-        //     throw 'No es posible eliminar las reservas caducadas'
-        // };
-
-        await Reserve.destroy({
-            where: { idReserve: id }
-        });
-
-        return Reserve.destroy({
+        return await Reserve.destroy({
             where: { id }
         });
+
     };
 
 };

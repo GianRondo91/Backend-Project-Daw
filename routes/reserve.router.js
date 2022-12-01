@@ -15,12 +15,12 @@ router.post('/', async (req, res) => {
         let newReserve = await reserveController.create(req.body, req.user.id);
 
         res.json({
-            newOrder,
+            newReserve,
             status
         });
     } catch (error) {
         res.status(500).json({
-            message: 'Server error' + error
+            message: error
         });
     };
 });
@@ -28,16 +28,10 @@ router.post('/', async (req, res) => {
 //getAll
 router.get('/', async (req, res) => {
     try {
-        let reserved = null;
-
-        if (req.query.reserved) {
-            reserved = req.query.reserved === '1';
-        }
-
-        res.json(await reserveController.getAll(getUserId(req), reserved));
+        res.json(await reserveController.getAll(getUserId(req), req.query.date));
     } catch (error) {
         res.status(500).json({
-            message: 'Server error' + error
+            message: error
         });
     };
 });
@@ -50,30 +44,10 @@ router.get('/:id', async (req, res) => {
         res.json(await reserveController.findById(id, getUserId(req)));
     } catch (error) {
         res.status(500).json({
-            message: 'Server error' + error
+            message: error
         });
     };
 });
-
-//update
-/*
-router.put('/:id', async(req, res) => {
-    try {
-        let id = req.params.id;
-        let status = 'Reserva actualizada con exito';
-        let result = await reserveController.update(req.body, id, getUserId(req));
-
-        res.json({
-            result,
-            status
-        });
-    } catch (error) {
-        res.status(500).json({
-            message: 'Server error' + error
-        });
-    };
-});
-*/
 
 //delete
 router.delete('/:id', async (req, res) => {
@@ -88,7 +62,7 @@ router.delete('/:id', async (req, res) => {
         })
     } catch (error) {
         res.status(500).json({
-            message: 'Server error' + error
+            message: error
         });
     }
 });

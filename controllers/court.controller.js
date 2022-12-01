@@ -8,12 +8,14 @@ class CourtController {
         let courts = null;
 
         if (category) {
-            courts = Court.findAll({
+            courts = await Court.findAll({
                 where: { category }
             });
         } else {
-            courts = Court.findAll();
+            courts = await Court.findAll();
         }
+
+        courts = courts.map(court => court.dataValues);
 
         courts.forEach(court => {
             court.times = [
