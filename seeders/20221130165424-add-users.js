@@ -8,7 +8,7 @@ const createUsers = async () => {
       name: "Giancarlo",
       surname: "Rondo Santa cruz",
       email: "giancarlorondo@outlook.com",
-      dni: "00000000G",
+      dni: "00000000G", 
       phone: 655555555,
       address: "calle 1",
       city: "Valencia",

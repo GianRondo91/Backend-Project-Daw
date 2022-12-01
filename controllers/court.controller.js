@@ -1,4 +1,4 @@
-const { Court } = require('../models/court');
+const { Court } = require('../models');
 
 class CourtController {
     constructor() { }

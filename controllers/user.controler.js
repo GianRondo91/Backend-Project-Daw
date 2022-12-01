@@ -1,17 +1,16 @@
-const { User } = require('../models/user');
+const { User } = require('../models');
 
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const secret = process.env.JWT_SECRET || 'pwsScret';
-
 class UserController {
     constructor() { }
 
+    //Register
     async create(user) {
+
         const existingUser = await User.findOne({
-            where: {
-                email: user.dni
-            }
+            where: { dni: user.dni }
         });
 
         if (existingUser) {

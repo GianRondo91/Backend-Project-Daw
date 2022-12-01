@@ -6,7 +6,7 @@ const userController = require('../controllers/user.controler');
 */
 
 //Register
-router.post('/register', async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         if (req.body.isAdmin && (!req.user || !req.user.isAdmin)) {
             res.sendStatus(403);
@@ -20,7 +20,6 @@ router.post('/register', async (req, res) => {
             newUser,
             status
         });
-
     } catch (error) {
         res.status(500).json({
             message: error
@@ -129,18 +128,18 @@ router.get('/logout', async (req, res) => {
 });
 
 //delete
-router.get('/:id', async(req, res) => {
+router.get('/:id', async (req, res) => {
     try {
         let id = req.params.id;
 
-        if(!req.user.isAdmin && parseInt(id) !== req.user.id) {
+        if (!req.user.isAdmin && parseInt(id) !== req.user.id) {
             res.sendStatus(403);
             return;
         }
 
         let result = await userController.delete(id);
         let status = 'Usuario eliminado con exito';
-        
+
         res.json({
             result,
             status

@@ -1,13 +1,10 @@
 'use strict';
 
-const {
-    Model, DATE
-} = require('sequelize');
+const { Model } = require('sequelize');
 
-module.exports = (sequlize, DataTypes) => {
+module.exports = (sequelize, DataTypes) => {
     class User extends Model {
         static associate(models) {
-
             this.hasMany(models.Reserve, {
                 sourceKey: 'id',
                 foreignkey: 'idUser'
@@ -28,9 +25,9 @@ module.exports = (sequlize, DataTypes) => {
         isAdmin: DataTypes.BOOLEAN
     },
         {
-            sequlize,
+            sequelize,
             modelName: 'User',
         });
 
-    return User
+    return User;
 };
