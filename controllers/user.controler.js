@@ -2,7 +2,7 @@ const { User } = require('../models');
 
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const secret = process.env.JWT_SECRET || 'pwsScret';
+const secret = process.env.JWT_SECRET || 'pwsSecret';
 class UserController {
     constructor() { }
 
