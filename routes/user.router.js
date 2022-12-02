@@ -91,10 +91,8 @@ router.get('/:id', async (req, res) => {
 
 //Update
 router.put('/:id', async (req, res) => {
-    console.log('uno');
     try {
         let id = req.params.id;
-        onsole.log('dos');
         if (!req.user.isAdmin && parseInt(id) !== req.user.id) {
             res.sendStatus(403);
             return;

@@ -40,8 +40,6 @@ class ReserveController {
             })
         };
 
-        //date = date.replace("-", ".");
-
         if (userId == null) {
             return await Reserve.findAll({
                 where: { date }
