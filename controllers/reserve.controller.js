@@ -1,14 +1,33 @@
 const { Reserve } = require('../models');
+const moment = require('moment');
 
 class ReserveController {
     constructor() { }
 
+    transformDate(reserve){
+        if(!reserve){
+            return reserve;
+        }
+        reserve = reserve.dataValues ?? reserve;
+        reserve.date = moment.utc(reserve.date).format("YYYY-MM-DD");
+        return reserve;
+    }
+
+    transformDates(reserves){
+        if(!reserves){
+            return reserves;
+        }
+        return reserves.map(this.transformDate);
+    }
+
     async create(reserve, userId) {
         reserve.idUser = userId;
 
+        const date = moment.utc(reserve.date, "YYYY-MM-DD");
+
         if (!reserve.idCourt 
             || !/\d{2}:[03]0/.test(reserve.time)
-            || !/\d{4}\.\d{2}\.\d{2}/.test(reserve.date)) {
+            || !date.isValid()) {
             throw 'La reserva es invalida';
         }
 
@@ -16,7 +35,7 @@ class ReserveController {
             where: {
                 idCourt: reserve.idCourt,
                 time: reserve.time,
-                date: reserve.date
+                date: date.toISOString()
             }
         });
 
@@ -25,75 +44,35 @@ class ReserveController {
             throw 'Ya existe una reserva para esos datos.';
         }
 
-        return await Reserve.create(reserve);
+        return this.transformDate(await Reserve.create(reserve));
     };
 
-    async getAll(userId, date) {
-
-        if (!date) {
-            if (userId == null) {
-                return await Reserve.findAll();
-            }
-
-            return await Reserve.findAll({
-                where: {idUser: userId}
-            })
-        };
-
+    async getAll(userId) {
         if (userId == null) {
-            return await Reserve.findAll({
-                where: { date }
-            });
-        };
+            return this.transformDates(await Reserve.findAll());
+        }
 
-        return await Reserve.findAll({
-            where: {
-                idUser: userId,
-                date
-            }
-        });
+        return this.transformDates(await Reserve.findAll({
+            where: {idUser: userId}
+        }));
     };
 
     async findById(id, userId) {
 
         if (userId == null) {
-            return await Reserve.findOne({
+            return this.transformDate(await Reserve.findOne({
                 where: { id }
-            })
+            }));
         };
 
-        return await Reserve.findOne({
+        return this.transformDate(await Reserve.findOne({
             where: {
                 id,
                 idUser: userId
             }
-        });
+        }));
     };
 
-    /*
-    async update(reserve, id, userId) {
-
-        if (userId == null) {
-            return Reserve.update(
-                reserve,
-                {
-                    where: { id }
-                }
-
-            )
-        };
-
-        return Reserve.update(
-            reserve,
-            {
-                where: {
-                    id,
-                    idUser: userId
-                }
-            }
-        );
-    };
-*/
     async delete(id, userId) {
 
         let reserve = this.findById(id, userId);

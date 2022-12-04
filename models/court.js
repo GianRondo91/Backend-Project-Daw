@@ -19,7 +19,8 @@ module.exports = (sequelize, DataTypes) => {
     Court.init({
         number: DataTypes.INTEGER,
         category: DataTypes.BOOLEAN,
-        availability: DataTypes.BOOLEAN
+        availability: DataTypes.BOOLEAN,
+        imageUrl: DataTypes.STRING
     },
         {
             sequelize,

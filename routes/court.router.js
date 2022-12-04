@@ -16,4 +16,15 @@ router.get('/', async(req,res) => {
     };
 });
 
+//getReserves
+router.get('/:id/reserves', async (req, res) => {
+    try {
+        res.json(await courtController.getReserves(req.params.id, req.query.date));
+    } catch (error) {
+        res.status(500).json({
+            message: error
+        });
+    };
+});
+
 module.exports = router;

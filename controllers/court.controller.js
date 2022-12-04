@@ -1,7 +1,21 @@
-const { Court } = require('../models');
+const { Court, Reserve } = require('../models');
+const moment = require('moment');
 
 class CourtController {
     constructor() { }
+
+    transformDate(reserve){
+        reserve = reserve.dataValues ?? reserve;
+        reserve.date = moment.utc(reserve.date).format("YYYY-MM-DD");
+        return reserve;
+    }
+
+    transformDates(reserves){
+        if(!reserves){
+            return reserves;
+        }
+        return reserves.map(this.transformDate);
+    }
 
     async getAll(category) {
 
@@ -41,6 +55,26 @@ class CourtController {
         });
 
         return courts;
+    };
+
+    async getReserves(courtId, date) {
+        
+        if(!date){
+            return this.transformDates(await Reserve.findAll({
+                where: {
+                    idCourt: courtId
+                }
+            }));
+        }
+
+        date = moment.utc(date, "YYYY-MM-DD");
+
+        return this.transformDates(await Reserve.findAll({
+            where: {
+                idCourt: courtId,
+                date: date.toISOString()
+            }
+        }));
     };
 };
 

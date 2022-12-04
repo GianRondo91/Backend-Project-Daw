@@ -6,7 +6,7 @@ const { route } = require('./user.router');
  * ENDPOINTS
  */
 
-const getUserId = req => req.user.id;
+const getUserId = req => req.user.isAdmin ? null : req.user.id;
 
 //Create
 router.post('/', async (req, res) => {
@@ -28,7 +28,7 @@ router.post('/', async (req, res) => {
 //getAll
 router.get('/', async (req, res) => {
     try {
-        res.json(await reserveController.getAll(getUserId(req), req.query.date));
+        res.json(await reserveController.getAll(getUserId(req)));
     } catch (error) {
         res.status(500).json({
             message: error

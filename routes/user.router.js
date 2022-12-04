@@ -46,23 +46,6 @@ router.post('/login', async (req, res) => {
     };
 });
 
-//Recover
-/*
-router.post('/recover', async (req, res) => {
-    try {
-        let dni = req.body.dni;
-        let status = 'Email correcto';
-
-        res.json(await userController.getById(req.params.dni));
-        
-    } catch (error) {
-        res.status(500).json({
-            message: error
-        });
-    };
-});
-*/
-
 //getAll
 router.get('/', async (req, res) => {
     try {

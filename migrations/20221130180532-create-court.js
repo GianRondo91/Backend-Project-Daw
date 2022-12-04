@@ -16,6 +16,9 @@ module.exports = {
       category: {
         type: Sequelize.STRING
       },
+      imageUrl: {
+        type: Sequelize.STRING
+      },
       availability: {
         type: Sequelize.BOOLEAN
       },
