@@ -13,7 +13,7 @@ const createUsers = async () => {
       address: "calle 1",
       city: "Valencia",
       cp: 46002,
-      password: await bcrypt.hash("Gian2022", 6),
+      password: await bcrypt.hash("Prueba2022!", 6),
       isAdmin: true
     },
     {
@@ -25,7 +25,7 @@ const createUsers = async () => {
       address: "calle 2",
       city: "Valencia",
       cp: 46010,
-      password: await bcrypt.hash("Prueba2022", 6),
+      password: await bcrypt.hash("Prueba2022!", 6),
       isAdmin: false
     }
   ];

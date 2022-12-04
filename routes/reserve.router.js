@@ -6,7 +6,7 @@ const { route } = require('./user.router');
  * ENDPOINTS
  */
 
-const getUserId = req => req.user.isAdmin ? null : req.user.id;
+const getUserId = req => req.user.id;
 
 //Create
 router.post('/', async (req, res) => {
