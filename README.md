@@ -85,6 +85,7 @@ En este proyecto puedes usar estas dependencias:
 
 ![image](https://user-images.githubusercontent.com/56218293/205616046-d2abc96c-ae3b-424a-88b1-e6d8f6d00b46.png)
 
+![gif](https://user-images.githubusercontent.com/56218293/205686093-855ef74d-ab5f-49b9-ab9c-e593f9bc8d68.mov)
 <br/>
 
 ## 📌 Futuras mejoras <a name = "future_scope"></a>
