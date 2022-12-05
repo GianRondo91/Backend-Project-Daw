@@ -2,26 +2,26 @@
 
 let reserves = [
   {
-    idUser: 2,
-    idCourt: 2,
+    idUser: 11,
+    idCourt: 11,
     date: "2022.12.27",
     time: "09:00"
  },
   {
-    idUser: 2,
-    idCourt: 4,
+    idUser: 11,
+    idCourt: 31,
     date: "2022.12.15",
     time: "12:00"
   },
   {
     idUser: 1,
-    idCourt: 5,
+    idCourt: 41,
     date: "2022.12.29",
     time: "18:00"
   },
   {
     idUser: 1,
-    idCourt: 8,
+    idCourt: 71,
     date: "2022.12.20",
     time: "21:00"
   },
